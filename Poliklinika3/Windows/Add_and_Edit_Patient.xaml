@@ -1,0 +1,59 @@
+﻿<Window x:Class="Poliklinika3.Windows.Add_and_Edit_Patient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Poliklinika3.Windows"
+        mc:Ignorable="d"
+        Title="Редактор пациента" Height="520" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="0.5"/>
+        <Border Grid.Column="3" Grid.Row="1" BorderBrush="Black" BorderThickness="0.5"/>
+        <Border Grid.Column="3" Grid.Row="3" BorderBrush="Black" BorderThickness="0.5"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="3">
+            <TextBlock Text="Фамилия" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbFamile" Margin="5,2" Height="22"/>
+            <TextBlock Text="Имя" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbName" Margin="5,2" Height="22"/>
+            <TextBlock Text="Отчество" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbSecondName" Margin="5,2" Height="22"/>
+            <TextBlock Text="Дата рождения" Margin="5,2" Height="22"/>
+            <DatePicker x:Name="txbDate" Margin="5,2" Height="22"/>
+            <TextBlock Text="Серия номер паспорта" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbSeriesNumber" Margin="5,2" Height="22"/>
+            <TextBlock Text="Адрес" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbAddress" Margin="5,2" Height="22"/>
+            <TextBlock Text="Пол" Margin="5,2" Height="22"/>
+            <ComboBox x:Name="txbPol" Margin="5,2" Height="22"/>
+            <TextBlock Text="Телефон" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbTel" Margin="5,2" Height="22"/>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="1">
+            <TextBlock Text="Название компании" Margin="5,2" Height="22"/>
+            <ComboBox x:Name="txbNameKompany" Margin="5,2" Height="22"/>
+            <TextBlock Text="Дата выдачи" Margin="5,2" Height="22"/>
+            <DatePicker x:Name="txbDate_of_issue" Margin="5,2" Height="22"/>
+            <TextBlock Text="Номер полиса" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbNumberPolicy" Margin="5,2" Height="22"/>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="3">
+            <TextBlock Text="Номер мед карты" Margin="5,2" Height="22"/>
+            <TextBox x:Name="txbcard" Margin="5,2" Height="22"/>
+        </StackPanel>
+        <Button Grid.Column="3" Grid.Row="3" Click="Exit" Content="Сохранить" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Width="70"/>
+    </Grid>
+</Window>

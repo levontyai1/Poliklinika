@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="534cc4c1f226446aaf3debbf041115c2" Name="Diagram1">
+        <EntityTypeShape EntityType="PoliklinikaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Врач" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Время_приема" Width="1.5" PointX="10.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.День_недели" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Диагноз" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Запись_в_медкарте" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Кампания_выдав_Полиса" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Категория_врача" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Мед__карта_пациента" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Отделение" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Пациенты" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Пол" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Полис_Пациента" Width="1.5" PointX="6" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Специализация" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PoliklinikaModel.Специализация_врача" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Врач__id_категор__7B264821" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Запись_в___id_Вр__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Специализ__id_Вр__7D0E9093" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Время_при__id_Дн__7EF6D905" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Время_при__id_за__02C769E9" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Время_при__id_Па__04AFB25B" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Запись_в___id_Ди__00DF2177" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Запись_в___id_Ка__01D345B0" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Полис_Пац__id_Ко__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Пациенты__id_Пац__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Специализ__id_От__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Пациенты__id_Пац__7A3223E8" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Пациенты__id_Пол__7849DB76" ManuallyRouted="false" />
+        <AssociationConnector Association="PoliklinikaModel.FK__Специализ__id_Сп__7E02B4CC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

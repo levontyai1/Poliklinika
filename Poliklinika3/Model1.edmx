@@ -1,0 +1,960 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PoliklinikaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Врач">
+          <Key>
+            <PropertyRef Name="id Врача" />
+          </Key>
+          <Property Name="id Врача" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Дата рождения" Type="date" Nullable="false" />
+          <Property Name="id категории" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Время приема">
+          <Key>
+            <PropertyRef Name="id Времени" />
+          </Key>
+          <Property Name="id Времени" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id записи " Type="int" Nullable="false" />
+          <Property Name="Время приема" Type="time" Precision="7" Nullable="false" />
+          <Property Name="id Дня" Type="int" Nullable="false" />
+          <Property Name="id Пациента" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="День недели">
+          <Key>
+            <PropertyRef Name="id дня" />
+          </Key>
+          <Property Name="id дня" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Диагноз">
+          <Key>
+            <PropertyRef Name="id Диагноза" />
+          </Key>
+          <Property Name="id Диагноза" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код Диагноза" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Запись в медкарте">
+          <Key>
+            <PropertyRef Name="id Записи" />
+          </Key>
+          <Property Name="id Записи" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id Карты" Type="int" Nullable="false" />
+          <Property Name="id Врача" Type="int" Nullable="false" />
+          <Property Name="id Диагноза" Type="int" Nullable="false" />
+          <Property Name="Назначения" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Кампания выдав Полиса">
+          <Key>
+            <PropertyRef Name="id Компании" />
+          </Key>
+          <Property Name="id Компании" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Категория врача">
+          <Key>
+            <PropertyRef Name="id категории" />
+          </Key>
+          <Property Name="id категории" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Мед_ карта пациента">
+          <Key>
+            <PropertyRef Name="id Карты" />
+          </Key>
+          <Property Name="id Карты" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Номер карты" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Отделение">
+          <Key>
+            <PropertyRef Name="id Отделения" />
+          </Key>
+          <Property Name="id Отделения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Пациенты">
+          <Key>
+            <PropertyRef Name="id Пациента" />
+          </Key>
+          <Property Name="id Пациента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Дата рождения" Type="date" Nullable="false" />
+          <Property Name="Серия Номер Паспорта" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Адрес" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="id Пола" Type="int" Nullable="false" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Пол">
+          <Key>
+            <PropertyRef Name="id пола" />
+          </Key>
+          <Property Name="id пола" Type="int" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Полис Пациента">
+          <Key>
+            <PropertyRef Name="id Полиса_Запись" />
+          </Key>
+          <Property Name="id Полиса_Запись" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id Компании" Type="int" Nullable="false" />
+          <Property Name="Дата выдачи" Type="date" Nullable="false" />
+          <Property Name="Номер полиса" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Специализация">
+          <Key>
+            <PropertyRef Name="id Специал" />
+          </Key>
+          <Property Name="id Специал" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Нормативы" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Специализация врача">
+          <Key>
+            <PropertyRef Name="id записи" />
+          </Key>
+          <Property Name="id записи" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id Врача" Type="int" Nullable="false" />
+          <Property Name="id Специал" Type="int" Nullable="false" />
+          <Property Name="id Отделения" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Врач__id категор__7B264821">
+          <End Role="Категория врача" Type="Self.Категория врача" Multiplicity="1" />
+          <End Role="Врач" Type="Self.Врач" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Категория врача">
+              <PropertyRef Name="id категории" />
+            </Principal>
+            <Dependent Role="Врач">
+              <PropertyRef Name="id категории" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Время при__id Дн__7EF6D905">
+          <End Role="День недели" Type="Self.День недели" Multiplicity="1" />
+          <End Role="Время приема" Type="Self.Время приема" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="День недели">
+              <PropertyRef Name="id дня" />
+            </Principal>
+            <Dependent Role="Время приема">
+              <PropertyRef Name="id Дня" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Время при__id за__02C769E9">
+          <End Role="Специализация врача" Type="Self.Специализация врача" Multiplicity="1" />
+          <End Role="Время приема" Type="Self.Время приема" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Специализация врача">
+              <PropertyRef Name="id записи" />
+            </Principal>
+            <Dependent Role="Время приема">
+              <PropertyRef Name="id записи " />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Время при__id Па__04AFB25B">
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="1" />
+          <End Role="Время приема" Type="Self.Время приема" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пациенты">
+              <PropertyRef Name="id Пациента" />
+            </Principal>
+            <Dependent Role="Время приема">
+              <PropertyRef Name="id Пациента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Запись в __id Вр__03BB8E22">
+          <End Role="Врач" Type="Self.Врач" Multiplicity="1" />
+          <End Role="Запись в медкарте" Type="Self.Запись в медкарте" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Врач">
+              <PropertyRef Name="id Врача" />
+            </Principal>
+            <Dependent Role="Запись в медкарте">
+              <PropertyRef Name="id Врача" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Запись в __id Ди__00DF2177">
+          <End Role="Диагноз" Type="Self.Диагноз" Multiplicity="1" />
+          <End Role="Запись в медкарте" Type="Self.Запись в медкарте" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Диагноз">
+              <PropertyRef Name="id Диагноза" />
+            </Principal>
+            <Dependent Role="Запись в медкарте">
+              <PropertyRef Name="id Диагноза" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Запись в __id Ка__01D345B0">
+          <End Role="Мед_ карта пациента" Type="Self.Мед_ карта пациента" Multiplicity="1" />
+          <End Role="Запись в медкарте" Type="Self.Запись в медкарте" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Мед_ карта пациента">
+              <PropertyRef Name="id Карты" />
+            </Principal>
+            <Dependent Role="Запись в медкарте">
+              <PropertyRef Name="id Карты" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пациенты__id Пац__793DFFAF">
+          <End Role="Мед_ карта пациента" Type="Self.Мед_ карта пациента" Multiplicity="1" />
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Мед_ карта пациента">
+              <PropertyRef Name="id Карты" />
+            </Principal>
+            <Dependent Role="Пациенты">
+              <PropertyRef Name="id Пациента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пациенты__id Пац__7A3223E8">
+          <End Role="Полис Пациента" Type="Self.Полис Пациента" Multiplicity="1" />
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Полис Пациента">
+              <PropertyRef Name="id Полиса_Запись" />
+            </Principal>
+            <Dependent Role="Пациенты">
+              <PropertyRef Name="id Пациента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пациенты__id Пол__7849DB76">
+          <End Role="Пол" Type="Self.Пол" Multiplicity="1" />
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пол">
+              <PropertyRef Name="id пола" />
+            </Principal>
+            <Dependent Role="Пациенты">
+              <PropertyRef Name="id Пола" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Полис Пац__id Ко__7FEAFD3E">
+          <End Role="Кампания выдав Полиса" Type="Self.Кампания выдав Полиса" Multiplicity="1" />
+          <End Role="Полис Пациента" Type="Self.Полис Пациента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Кампания выдав Полиса">
+              <PropertyRef Name="id Компании" />
+            </Principal>
+            <Dependent Role="Полис Пациента">
+              <PropertyRef Name="id Компании" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Специализ__id Вр__7D0E9093">
+          <End Role="Врач" Type="Self.Врач" Multiplicity="1" />
+          <End Role="Специализация врача" Type="Self.Специализация врача" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Врач">
+              <PropertyRef Name="id Врача" />
+            </Principal>
+            <Dependent Role="Специализация врача">
+              <PropertyRef Name="id Врача" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Специализ__id От__7C1A6C5A">
+          <End Role="Отделение" Type="Self.Отделение" Multiplicity="1" />
+          <End Role="Специализация врача" Type="Self.Специализация врача" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Отделение">
+              <PropertyRef Name="id Отделения" />
+            </Principal>
+            <Dependent Role="Специализация врача">
+              <PropertyRef Name="id Отделения" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Специализ__id Сп__7E02B4CC">
+          <End Role="Специализация" Type="Self.Специализация" Multiplicity="1" />
+          <End Role="Специализация врача" Type="Self.Специализация врача" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Специализация">
+              <PropertyRef Name="id Специал" />
+            </Principal>
+            <Dependent Role="Специализация врача">
+              <PropertyRef Name="id Специал" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PoliklinikaModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Врач" EntityType="Self.Врач" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Время приема" EntityType="Self.Время приема" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="День недели" EntityType="Self.День недели" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Диагноз" EntityType="Self.Диагноз" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Запись в медкарте" EntityType="Self.Запись в медкарте" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Кампания выдав Полиса" EntityType="Self.Кампания выдав Полиса" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Категория врача" EntityType="Self.Категория врача" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Мед_ карта пациента" EntityType="Self.Мед_ карта пациента" Schema="dbo" Table="Мед. карта пациента" store:Type="Tables" />
+          <EntitySet Name="Отделение" EntityType="Self.Отделение" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пациенты" EntityType="Self.Пациенты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пол" EntityType="Self.Пол" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Полис Пациента" EntityType="Self.Полис Пациента" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Специализация" EntityType="Self.Специализация" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Специализация врача" EntityType="Self.Специализация врача" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Врач__id категор__7B264821" Association="Self.FK__Врач__id категор__7B264821">
+            <End Role="Категория врача" EntitySet="Категория врача" />
+            <End Role="Врач" EntitySet="Врач" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Время при__id Дн__7EF6D905" Association="Self.FK__Время при__id Дн__7EF6D905">
+            <End Role="День недели" EntitySet="День недели" />
+            <End Role="Время приема" EntitySet="Время приема" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Время при__id за__02C769E9" Association="Self.FK__Время при__id за__02C769E9">
+            <End Role="Специализация врача" EntitySet="Специализация врача" />
+            <End Role="Время приема" EntitySet="Время приема" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Время при__id Па__04AFB25B" Association="Self.FK__Время при__id Па__04AFB25B">
+            <End Role="Пациенты" EntitySet="Пациенты" />
+            <End Role="Время приема" EntitySet="Время приема" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Запись в __id Вр__03BB8E22" Association="Self.FK__Запись в __id Вр__03BB8E22">
+            <End Role="Врач" EntitySet="Врач" />
+            <End Role="Запись в медкарте" EntitySet="Запись в медкарте" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Запись в __id Ди__00DF2177" Association="Self.FK__Запись в __id Ди__00DF2177">
+            <End Role="Диагноз" EntitySet="Диагноз" />
+            <End Role="Запись в медкарте" EntitySet="Запись в медкарте" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Запись в __id Ка__01D345B0" Association="Self.FK__Запись в __id Ка__01D345B0">
+            <End Role="Мед_ карта пациента" EntitySet="Мед_ карта пациента" />
+            <End Role="Запись в медкарте" EntitySet="Запись в медкарте" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пациенты__id Пац__793DFFAF" Association="Self.FK__Пациенты__id Пац__793DFFAF">
+            <End Role="Мед_ карта пациента" EntitySet="Мед_ карта пациента" />
+            <End Role="Пациенты" EntitySet="Пациенты" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пациенты__id Пац__7A3223E8" Association="Self.FK__Пациенты__id Пац__7A3223E8">
+            <End Role="Полис Пациента" EntitySet="Полис Пациента" />
+            <End Role="Пациенты" EntitySet="Пациенты" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пациенты__id Пол__7849DB76" Association="Self.FK__Пациенты__id Пол__7849DB76">
+            <End Role="Пол" EntitySet="Пол" />
+            <End Role="Пациенты" EntitySet="Пациенты" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Полис Пац__id Ко__7FEAFD3E" Association="Self.FK__Полис Пац__id Ко__7FEAFD3E">
+            <End Role="Кампания выдав Полиса" EntitySet="Кампания выдав Полиса" />
+            <End Role="Полис Пациента" EntitySet="Полис Пациента" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Специализ__id Вр__7D0E9093" Association="Self.FK__Специализ__id Вр__7D0E9093">
+            <End Role="Врач" EntitySet="Врач" />
+            <End Role="Специализация врача" EntitySet="Специализация врача" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Специализ__id От__7C1A6C5A" Association="Self.FK__Специализ__id От__7C1A6C5A">
+            <End Role="Отделение" EntitySet="Отделение" />
+            <End Role="Специализация врача" EntitySet="Специализация врача" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Специализ__id Сп__7E02B4CC" Association="Self.FK__Специализ__id Сп__7E02B4CC">
+            <End Role="Специализация" EntitySet="Специализация" />
+            <End Role="Специализация врача" EntitySet="Специализация врача" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PoliklinikaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Врач">
+          <Key>
+            <PropertyRef Name="id_Врача" />
+          </Key>
+          <Property Name="id_Врача" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_категории" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Категория_врача" Relationship="Self.FK__Врач__id_категор__7B264821" FromRole="Врач" ToRole="Категория_врача" />
+          <NavigationProperty Name="Запись_в_медкарте" Relationship="Self.FK__Запись_в___id_Вр__03BB8E22" FromRole="Врач" ToRole="Запись_в_медкарте" />
+          <NavigationProperty Name="Специализация_врача" Relationship="Self.FK__Специализ__id_Вр__7D0E9093" FromRole="Врач" ToRole="Специализация_врача" />
+        </EntityType>
+        <EntityType Name="Время_приема">
+          <Key>
+            <PropertyRef Name="id_Времени" />
+          </Key>
+          <Property Name="id_Времени" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_записи_" Type="Int32" Nullable="false" />
+          <Property Name="Время_приема1" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="id_Дня" Type="Int32" Nullable="false" />
+          <Property Name="id_Пациента" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="День_недели" Relationship="Self.FK__Время_при__id_Дн__7EF6D905" FromRole="Время_приема" ToRole="День_недели" />
+          <NavigationProperty Name="Специализация_врача" Relationship="Self.FK__Время_при__id_за__02C769E9" FromRole="Время_приема" ToRole="Специализация_врача" />
+          <NavigationProperty Name="Пациенты" Relationship="Self.FK__Время_при__id_Па__04AFB25B" FromRole="Время_приема" ToRole="Пациенты" />
+        </EntityType>
+        <EntityType Name="День_недели">
+          <Key>
+            <PropertyRef Name="id_дня" />
+          </Key>
+          <Property Name="id_дня" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Время_приема" Relationship="Self.FK__Время_при__id_Дн__7EF6D905" FromRole="День_недели" ToRole="Время_приема" />
+        </EntityType>
+        <EntityType Name="Диагноз">
+          <Key>
+            <PropertyRef Name="id_Диагноза" />
+          </Key>
+          <Property Name="id_Диагноза" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_Диагноза" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Запись_в_медкарте" Relationship="Self.FK__Запись_в___id_Ди__00DF2177" FromRole="Диагноз" ToRole="Запись_в_медкарте" />
+        </EntityType>
+        <EntityType Name="Запись_в_медкарте">
+          <Key>
+            <PropertyRef Name="id_Записи" />
+          </Key>
+          <Property Name="id_Записи" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Карты" Type="Int32" Nullable="false" />
+          <Property Name="id_Врача" Type="Int32" Nullable="false" />
+          <Property Name="id_Диагноза" Type="Int32" Nullable="false" />
+          <Property Name="Назначения" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Врач" Relationship="Self.FK__Запись_в___id_Вр__03BB8E22" FromRole="Запись_в_медкарте" ToRole="Врач" />
+          <NavigationProperty Name="Диагноз" Relationship="Self.FK__Запись_в___id_Ди__00DF2177" FromRole="Запись_в_медкарте" ToRole="Диагноз" />
+          <NavigationProperty Name="Мед__карта_пациента" Relationship="Self.FK__Запись_в___id_Ка__01D345B0" FromRole="Запись_в_медкарте" ToRole="Мед__карта_пациента" />
+        </EntityType>
+        <EntityType Name="Кампания_выдав_Полиса">
+          <Key>
+            <PropertyRef Name="id_Компании" />
+          </Key>
+          <Property Name="id_Компании" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Полис_Пациента" Relationship="Self.FK__Полис_Пац__id_Ко__7FEAFD3E" FromRole="Кампания_выдав_Полиса" ToRole="Полис_Пациента" />
+        </EntityType>
+        <EntityType Name="Категория_врача">
+          <Key>
+            <PropertyRef Name="id_категории" />
+          </Key>
+          <Property Name="id_категории" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Врач" Relationship="Self.FK__Врач__id_категор__7B264821" FromRole="Категория_врача" ToRole="Врач" />
+        </EntityType>
+        <EntityType Name="Мед__карта_пациента">
+          <Key>
+            <PropertyRef Name="id_Карты" />
+          </Key>
+          <Property Name="id_Карты" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Номер_карты" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Запись_в_медкарте" Relationship="Self.FK__Запись_в___id_Ка__01D345B0" FromRole="Мед__карта_пациента" ToRole="Запись_в_медкарте" />
+          <NavigationProperty Name="Пациенты" Relationship="Self.FK__Пациенты__id_Пац__793DFFAF" FromRole="Мед__карта_пациента" ToRole="Пациенты" />
+        </EntityType>
+        <EntityType Name="Отделение">
+          <Key>
+            <PropertyRef Name="id_Отделения" />
+          </Key>
+          <Property Name="id_Отделения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Специализация_врача" Relationship="Self.FK__Специализ__id_От__7C1A6C5A" FromRole="Отделение" ToRole="Специализация_врача" />
+        </EntityType>
+        <EntityType Name="Пациенты">
+          <Key>
+            <PropertyRef Name="id_Пациента" />
+          </Key>
+          <Property Name="id_Пациента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Серия_Номер_Паспорта" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Адрес" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_Пола" Type="Int32" Nullable="false" />
+          <Property Name="Телефон" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Время_приема" Relationship="Self.FK__Время_при__id_Па__04AFB25B" FromRole="Пациенты" ToRole="Время_приема" />
+          <NavigationProperty Name="Мед__карта_пациента" Relationship="Self.FK__Пациенты__id_Пац__793DFFAF" FromRole="Пациенты" ToRole="Мед__карта_пациента" />
+          <NavigationProperty Name="Полис_Пациента" Relationship="Self.FK__Пациенты__id_Пац__7A3223E8" FromRole="Пациенты" ToRole="Полис_Пациента" />
+          <NavigationProperty Name="Пол" Relationship="Self.FK__Пациенты__id_Пол__7849DB76" FromRole="Пациенты" ToRole="Пол" />
+        </EntityType>
+        <EntityType Name="Пол">
+          <Key>
+            <PropertyRef Name="id_пола" />
+          </Key>
+          <Property Name="id_пола" Type="Int32" Nullable="false" />
+          <Property Name="Наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Пациенты" Relationship="Self.FK__Пациенты__id_Пол__7849DB76" FromRole="Пол" ToRole="Пациенты" />
+        </EntityType>
+        <EntityType Name="Полис_Пациента">
+          <Key>
+            <PropertyRef Name="id_Полиса_Запись" />
+          </Key>
+          <Property Name="id_Полиса_Запись" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Компании" Type="Int32" Nullable="false" />
+          <Property Name="Дата_выдачи" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Номер_полиса" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Кампания_выдав_Полиса" Relationship="Self.FK__Полис_Пац__id_Ко__7FEAFD3E" FromRole="Полис_Пациента" ToRole="Кампания_выдав_Полиса" />
+          <NavigationProperty Name="Пациенты" Relationship="Self.FK__Пациенты__id_Пац__7A3223E8" FromRole="Полис_Пациента" ToRole="Пациенты" />
+        </EntityType>
+        <EntityType Name="Специализация">
+          <Key>
+            <PropertyRef Name="id_Специал" />
+          </Key>
+          <Property Name="id_Специал" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Нормативы" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Специализация_врача" Relationship="Self.FK__Специализ__id_Сп__7E02B4CC" FromRole="Специализация" ToRole="Специализация_врача" />
+        </EntityType>
+        <EntityType Name="Специализация_врача">
+          <Key>
+            <PropertyRef Name="id_записи" />
+          </Key>
+          <Property Name="id_записи" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Врача" Type="Int32" Nullable="false" />
+          <Property Name="id_Специал" Type="Int32" Nullable="false" />
+          <Property Name="id_Отделения" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Врач" Relationship="Self.FK__Специализ__id_Вр__7D0E9093" FromRole="Специализация_врача" ToRole="Врач" />
+          <NavigationProperty Name="Время_приема" Relationship="Self.FK__Время_при__id_за__02C769E9" FromRole="Специализация_врача" ToRole="Время_приема" />
+          <NavigationProperty Name="Отделение" Relationship="Self.FK__Специализ__id_От__7C1A6C5A" FromRole="Специализация_врача" ToRole="Отделение" />
+          <NavigationProperty Name="Специализация" Relationship="Self.FK__Специализ__id_Сп__7E02B4CC" FromRole="Специализация_врача" ToRole="Специализация" />
+        </EntityType>
+        <Association Name="FK__Врач__id_категор__7B264821">
+          <End Role="Категория_врача" Type="Self.Категория_врача" Multiplicity="1" />
+          <End Role="Врач" Type="Self.Врач" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Категория_врача">
+              <PropertyRef Name="id_категории" />
+            </Principal>
+            <Dependent Role="Врач">
+              <PropertyRef Name="id_категории" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Запись_в___id_Вр__03BB8E22">
+          <End Role="Врач" Type="Self.Врач" Multiplicity="1" />
+          <End Role="Запись_в_медкарте" Type="Self.Запись_в_медкарте" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Врач">
+              <PropertyRef Name="id_Врача" />
+            </Principal>
+            <Dependent Role="Запись_в_медкарте">
+              <PropertyRef Name="id_Врача" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Специализ__id_Вр__7D0E9093">
+          <End Role="Врач" Type="Self.Врач" Multiplicity="1" />
+          <End Role="Специализация_врача" Type="Self.Специализация_врача" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Врач">
+              <PropertyRef Name="id_Врача" />
+            </Principal>
+            <Dependent Role="Специализация_врача">
+              <PropertyRef Name="id_Врача" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Время_при__id_Дн__7EF6D905">
+          <End Role="День_недели" Type="Self.День_недели" Multiplicity="1" />
+          <End Role="Время_приема" Type="Self.Время_приема" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="День_недели">
+              <PropertyRef Name="id_дня" />
+            </Principal>
+            <Dependent Role="Время_приема">
+              <PropertyRef Name="id_Дня" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Время_при__id_за__02C769E9">
+          <End Role="Специализация_врача" Type="Self.Специализация_врача" Multiplicity="1" />
+          <End Role="Время_приема" Type="Self.Время_приема" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Специализация_врача">
+              <PropertyRef Name="id_записи" />
+            </Principal>
+            <Dependent Role="Время_приема">
+              <PropertyRef Name="id_записи_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Время_при__id_Па__04AFB25B">
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="1" />
+          <End Role="Время_приема" Type="Self.Время_приема" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пациенты">
+              <PropertyRef Name="id_Пациента" />
+            </Principal>
+            <Dependent Role="Время_приема">
+              <PropertyRef Name="id_Пациента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Запись_в___id_Ди__00DF2177">
+          <End Role="Диагноз" Type="Self.Диагноз" Multiplicity="1" />
+          <End Role="Запись_в_медкарте" Type="Self.Запись_в_медкарте" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Диагноз">
+              <PropertyRef Name="id_Диагноза" />
+            </Principal>
+            <Dependent Role="Запись_в_медкарте">
+              <PropertyRef Name="id_Диагноза" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Запись_в___id_Ка__01D345B0">
+          <End Role="Мед__карта_пациента" Type="Self.Мед__карта_пациента" Multiplicity="1" />
+          <End Role="Запись_в_медкарте" Type="Self.Запись_в_медкарте" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Мед__карта_пациента">
+              <PropertyRef Name="id_Карты" />
+            </Principal>
+            <Dependent Role="Запись_в_медкарте">
+              <PropertyRef Name="id_Карты" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Полис_Пац__id_Ко__7FEAFD3E">
+          <End Role="Кампания_выдав_Полиса" Type="Self.Кампания_выдав_Полиса" Multiplicity="1" />
+          <End Role="Полис_Пациента" Type="Self.Полис_Пациента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Кампания_выдав_Полиса">
+              <PropertyRef Name="id_Компании" />
+            </Principal>
+            <Dependent Role="Полис_Пациента">
+              <PropertyRef Name="id_Компании" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пациенты__id_Пац__793DFFAF">
+          <End Role="Мед__карта_пациента" Type="Self.Мед__карта_пациента" Multiplicity="1" />
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Мед__карта_пациента">
+              <PropertyRef Name="id_Карты" />
+            </Principal>
+            <Dependent Role="Пациенты">
+              <PropertyRef Name="id_Пациента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Специализ__id_От__7C1A6C5A">
+          <End Role="Отделение" Type="Self.Отделение" Multiplicity="1" />
+          <End Role="Специализация_врача" Type="Self.Специализация_врача" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Отделение">
+              <PropertyRef Name="id_Отделения" />
+            </Principal>
+            <Dependent Role="Специализация_врача">
+              <PropertyRef Name="id_Отделения" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пациенты__id_Пац__7A3223E8">
+          <End Role="Полис_Пациента" Type="Self.Полис_Пациента" Multiplicity="1" />
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Полис_Пациента">
+              <PropertyRef Name="id_Полиса_Запись" />
+            </Principal>
+            <Dependent Role="Пациенты">
+              <PropertyRef Name="id_Пациента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Пациенты__id_Пол__7849DB76">
+          <End Role="Пол" Type="Self.Пол" Multiplicity="1" />
+          <End Role="Пациенты" Type="Self.Пациенты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Пол">
+              <PropertyRef Name="id_пола" />
+            </Principal>
+            <Dependent Role="Пациенты">
+              <PropertyRef Name="id_Пола" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Специализ__id_Сп__7E02B4CC">
+          <End Role="Специализация" Type="Self.Специализация" Multiplicity="1" />
+          <End Role="Специализация_врача" Type="Self.Специализация_врача" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Специализация">
+              <PropertyRef Name="id_Специал" />
+            </Principal>
+            <Dependent Role="Специализация_врача">
+              <PropertyRef Name="id_Специал" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PoliklinikaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Врач" EntityType="Self.Врач" />
+          <EntitySet Name="Время_приема" EntityType="Self.Время_приема" />
+          <EntitySet Name="День_недели" EntityType="Self.День_недели" />
+          <EntitySet Name="Диагноз" EntityType="Self.Диагноз" />
+          <EntitySet Name="Запись_в_медкарте" EntityType="Self.Запись_в_медкарте" />
+          <EntitySet Name="Кампания_выдав_Полиса" EntityType="Self.Кампания_выдав_Полиса" />
+          <EntitySet Name="Категория_врача" EntityType="Self.Категория_врача" />
+          <EntitySet Name="Мед__карта_пациента" EntityType="Self.Мед__карта_пациента" />
+          <EntitySet Name="Отделение" EntityType="Self.Отделение" />
+          <EntitySet Name="Пациенты" EntityType="Self.Пациенты" />
+          <EntitySet Name="Пол" EntityType="Self.Пол" />
+          <EntitySet Name="Полис_Пациента" EntityType="Self.Полис_Пациента" />
+          <EntitySet Name="Специализация" EntityType="Self.Специализация" />
+          <EntitySet Name="Специализация_врача" EntityType="Self.Специализация_врача" />
+          <AssociationSet Name="FK__Врач__id_категор__7B264821" Association="Self.FK__Врач__id_категор__7B264821">
+            <End Role="Категория_врача" EntitySet="Категория_врача" />
+            <End Role="Врач" EntitySet="Врач" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Запись_в___id_Вр__03BB8E22" Association="Self.FK__Запись_в___id_Вр__03BB8E22">
+            <End Role="Врач" EntitySet="Врач" />
+            <End Role="Запись_в_медкарте" EntitySet="Запись_в_медкарте" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Специализ__id_Вр__7D0E9093" Association="Self.FK__Специализ__id_Вр__7D0E9093">
+            <End Role="Врач" EntitySet="Врач" />
+            <End Role="Специализация_врача" EntitySet="Специализация_врача" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Время_при__id_Дн__7EF6D905" Association="Self.FK__Время_при__id_Дн__7EF6D905">
+            <End Role="День_недели" EntitySet="День_недели" />
+            <End Role="Время_приема" EntitySet="Время_приема" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Время_при__id_за__02C769E9" Association="Self.FK__Время_при__id_за__02C769E9">
+            <End Role="Специализация_врача" EntitySet="Специализация_врача" />
+            <End Role="Время_приема" EntitySet="Время_приема" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Время_при__id_Па__04AFB25B" Association="Self.FK__Время_при__id_Па__04AFB25B">
+            <End Role="Пациенты" EntitySet="Пациенты" />
+            <End Role="Время_приема" EntitySet="Время_приема" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Запись_в___id_Ди__00DF2177" Association="Self.FK__Запись_в___id_Ди__00DF2177">
+            <End Role="Диагноз" EntitySet="Диагноз" />
+            <End Role="Запись_в_медкарте" EntitySet="Запись_в_медкарте" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Запись_в___id_Ка__01D345B0" Association="Self.FK__Запись_в___id_Ка__01D345B0">
+            <End Role="Мед__карта_пациента" EntitySet="Мед__карта_пациента" />
+            <End Role="Запись_в_медкарте" EntitySet="Запись_в_медкарте" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Полис_Пац__id_Ко__7FEAFD3E" Association="Self.FK__Полис_Пац__id_Ко__7FEAFD3E">
+            <End Role="Кампания_выдав_Полиса" EntitySet="Кампания_выдав_Полиса" />
+            <End Role="Полис_Пациента" EntitySet="Полис_Пациента" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пациенты__id_Пац__793DFFAF" Association="Self.FK__Пациенты__id_Пац__793DFFAF">
+            <End Role="Мед__карта_пациента" EntitySet="Мед__карта_пациента" />
+            <End Role="Пациенты" EntitySet="Пациенты" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Специализ__id_От__7C1A6C5A" Association="Self.FK__Специализ__id_От__7C1A6C5A">
+            <End Role="Отделение" EntitySet="Отделение" />
+            <End Role="Специализация_врача" EntitySet="Специализация_врача" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пациенты__id_Пац__7A3223E8" Association="Self.FK__Пациенты__id_Пац__7A3223E8">
+            <End Role="Полис_Пациента" EntitySet="Полис_Пациента" />
+            <End Role="Пациенты" EntitySet="Пациенты" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Пациенты__id_Пол__7849DB76" Association="Self.FK__Пациенты__id_Пол__7849DB76">
+            <End Role="Пол" EntitySet="Пол" />
+            <End Role="Пациенты" EntitySet="Пациенты" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Специализ__id_Сп__7E02B4CC" Association="Self.FK__Специализ__id_Сп__7E02B4CC">
+            <End Role="Специализация" EntitySet="Специализация" />
+            <End Role="Специализация_врача" EntitySet="Специализация_врача" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PoliklinikaModelContainer" CdmEntityContainer="PoliklinikaEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PoliklinikaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Врач">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Врач">
+              <MappingFragment StoreEntitySet="Врач">
+                <ScalarProperty Name="id_Врача" ColumnName="id Врача" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+                <ScalarProperty Name="id_категории" ColumnName="id категории" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Время_приема">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Время_приема">
+              <MappingFragment StoreEntitySet="Время приема">
+                <ScalarProperty Name="id_Времени" ColumnName="id Времени" />
+                <ScalarProperty Name="id_записи_" ColumnName="id записи " />
+                <ScalarProperty Name="Время_приема1" ColumnName="Время приема" />
+                <ScalarProperty Name="id_Дня" ColumnName="id Дня" />
+                <ScalarProperty Name="id_Пациента" ColumnName="id Пациента" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="День_недели">
+            <EntityTypeMapping TypeName="PoliklinikaModel.День_недели">
+              <MappingFragment StoreEntitySet="День недели">
+                <ScalarProperty Name="id_дня" ColumnName="id дня" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Диагноз">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Диагноз">
+              <MappingFragment StoreEntitySet="Диагноз">
+                <ScalarProperty Name="id_Диагноза" ColumnName="id Диагноза" />
+                <ScalarProperty Name="Код_Диагноза" ColumnName="Код Диагноза" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Запись_в_медкарте">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Запись_в_медкарте">
+              <MappingFragment StoreEntitySet="Запись в медкарте">
+                <ScalarProperty Name="id_Записи" ColumnName="id Записи" />
+                <ScalarProperty Name="id_Карты" ColumnName="id Карты" />
+                <ScalarProperty Name="id_Врача" ColumnName="id Врача" />
+                <ScalarProperty Name="id_Диагноза" ColumnName="id Диагноза" />
+                <ScalarProperty Name="Назначения" ColumnName="Назначения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Кампания_выдав_Полиса">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Кампания_выдав_Полиса">
+              <MappingFragment StoreEntitySet="Кампания выдав Полиса">
+                <ScalarProperty Name="id_Компании" ColumnName="id Компании" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Категория_врача">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Категория_врача">
+              <MappingFragment StoreEntitySet="Категория врача">
+                <ScalarProperty Name="id_категории" ColumnName="id категории" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Мед__карта_пациента">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Мед__карта_пациента">
+              <MappingFragment StoreEntitySet="Мед_ карта пациента">
+                <ScalarProperty Name="id_Карты" ColumnName="id Карты" />
+                <ScalarProperty Name="Номер_карты" ColumnName="Номер карты" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Отделение">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Отделение">
+              <MappingFragment StoreEntitySet="Отделение">
+                <ScalarProperty Name="id_Отделения" ColumnName="id Отделения" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пациенты">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Пациенты">
+              <MappingFragment StoreEntitySet="Пациенты">
+                <ScalarProperty Name="id_Пациента" ColumnName="id Пациента" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+                <ScalarProperty Name="Серия_Номер_Паспорта" ColumnName="Серия Номер Паспорта" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="id_Пола" ColumnName="id Пола" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пол">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Пол">
+              <MappingFragment StoreEntitySet="Пол">
+                <ScalarProperty Name="id_пола" ColumnName="id пола" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Полис_Пациента">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Полис_Пациента">
+              <MappingFragment StoreEntitySet="Полис Пациента">
+                <ScalarProperty Name="id_Полиса_Запись" ColumnName="id Полиса_Запись" />
+                <ScalarProperty Name="id_Компании" ColumnName="id Компании" />
+                <ScalarProperty Name="Дата_выдачи" ColumnName="Дата выдачи" />
+                <ScalarProperty Name="Номер_полиса" ColumnName="Номер полиса" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Специализация">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Специализация">
+              <MappingFragment StoreEntitySet="Специализация">
+                <ScalarProperty Name="id_Специал" ColumnName="id Специал" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+                <ScalarProperty Name="Нормативы" ColumnName="Нормативы" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Специализация_врача">
+            <EntityTypeMapping TypeName="PoliklinikaModel.Специализация_врача">
+              <MappingFragment StoreEntitySet="Специализация врача">
+                <ScalarProperty Name="id_записи" ColumnName="id записи" />
+                <ScalarProperty Name="id_Врача" ColumnName="id Врача" />
+                <ScalarProperty Name="id_Специал" ColumnName="id Специал" />
+                <ScalarProperty Name="id_Отделения" ColumnName="id Отделения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
